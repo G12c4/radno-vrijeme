@@ -82,7 +82,6 @@
 }
 
 #areaA p{
-        padding-left: 0.5rem;
         font-size: 0.8rem;
         height: 4.8rem;
         border-bottom: 1px solid gray;
@@ -95,7 +94,7 @@
 
 span {
     font-size:1.7em;
-    margin-left: -10px;
+    margin-left: -17px;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
