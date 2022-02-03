@@ -30,8 +30,6 @@
                 let workerData= res.data.map(element => element.RADNICI)
                 workerList = []
                 workerList.push(...workerData)
-                // console.log(`External: ${workerData}`)
-                // console.log(`Internal: ${workerList}`)
             })
             .catch(error => console.log('error', error));
             }
