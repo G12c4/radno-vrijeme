@@ -1,6 +1,7 @@
 <script>
     import { elasticInOut } from "svelte/easing";
     import { scale } from 'svelte/transition'
+    import { Circle2 } from 'svelte-loading-spinners'
     let today = new Date()
     let date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear()
     let time = today.getHours() + ":" + today.getMinutes()
@@ -9,6 +10,7 @@
     let inOutSelected = ""
     let dataSaved = false
     let savebtnclicked = false
+    let animation = true
 
     let getInicials = (name) => {
         let names = name.split(" ")
@@ -58,7 +60,7 @@
                 let workerData= res.data.map(element => element.RADNICI)
                 workerList = []
                 workerList.push(...workerData)
-                console.log(workerData)
+                animation = false
             })
             .catch(error => console.log('error', error));
             }
@@ -76,6 +78,11 @@
 		<span>{d}</span>
             </p>
             {/each}
+            {#if animation}
+            <div class="animation-load">
+                <Circle2 size="60" unit="px"/>
+            </div>
+            {/if}
         </div>
         {#if workerSeleted}
             <div id="areaB">
@@ -154,6 +161,13 @@
 
 #areaA:hover {
     box-shadow: none;
+}
+
+.animation-load {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 #areaB {

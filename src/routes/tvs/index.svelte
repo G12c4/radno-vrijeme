@@ -1,8 +1,10 @@
 <script>
     import { goto } from '$app/navigation';
+    import { Circle2 } from 'svelte-loading-spinners'
     import { workerSelected } from '../../stores/store.js';
     
     let workerList = []
+    let animation = true
 
     let getInicials = (name) => {
         let names = name.split(" ")
@@ -30,6 +32,7 @@
                 let workerData= res.data.map(element => element.RADNICI)
                 workerList = []
                 workerList.push(...workerData)
+                animation = false
             })
             .catch(error => console.log('error', error));
             }
@@ -42,6 +45,11 @@
 
     <div id="grid">
         <div id="areaA">
+            {#if animation}
+            <div class="animation">
+                <Circle2 size="60" unit="px"/>
+            </div>
+            {/if}
             {#each workerList as d}
             <p data-letters={getInicials(d)} on:click="{() => {
                 $workerSelected = d
@@ -88,6 +96,13 @@
 
 #areaA p:last-child {
     border: none;
+}
+
+.animation {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 span {
