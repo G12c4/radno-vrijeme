@@ -136,7 +136,7 @@
     background: #f6f6f9;
     display: grid;
     width: 100%;
-    grid-template-columns: 1.3fr 3fr;
+    grid-template-columns: 2fr 3fr;
 }
 
 #areaA {
@@ -243,6 +243,7 @@
 
 span {
     font-size:1.7em;
+    margin-left: -20px;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
